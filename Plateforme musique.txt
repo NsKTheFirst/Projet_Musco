@@ -1,0 +1,13 @@
+Contexte: Plateforme mettant en relations les musiciens les videastes et les organisateurs d'évènements
+de leur région ou du monde entier. Possibilité de mettre en ligne ses créations.
+
+Besoin: De nombreux musiciens sont en recherche d'autres musiciens pour jouer en groupe, de beat maker, d'auteurs,
+ de vidéastes pour faire des clips, etc...
+
+Actions personnas:
+-Visiteur: Découverte des musiciens de sa région.
+
+-Utilisateur: A grace à la plateforme accès aux musiciens et organisateurs de sa région de sa région afin de pouvoir
+faire aboutir leurs projets, et se faire connaitre.
+
+-Développeur: Permettre aux musiciens d'accomplir leurs projets et de se faire connaitre.
