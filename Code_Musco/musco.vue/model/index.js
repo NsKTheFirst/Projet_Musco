@@ -11,7 +11,7 @@ const database = function database(config) {
     const connect = function connect() {
       connection.connect(function(err, res) {
         if (err) return console.error(err);
-        else console.log(res);
+        else console.log("db connected");
          // le serveur node est connecté au serveur mysql (BDD)
       });
     };

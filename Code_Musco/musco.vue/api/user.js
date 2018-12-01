@@ -5,13 +5,16 @@ const userAPi = function userAPi(connection) {
   
     router.post('/user', (req, res) => {
       userModel.create((err, dataset) => {
+        if (err) res.send(err);
         res.send(dataset);
+        console.log("ça poste");
       }, req.body); // post datas ici ...
     });
   
     router.get('/user/:id', (req, res) => {
       userModel.get((err, dataset) => {
-        res.send(dataset[1]);
+        if (err) res.send(err);
+        res.send(dataset);
       }, req.params.id);
     });
   
@@ -23,9 +26,10 @@ const userAPi = function userAPi(connection) {
   
     router.delete('/user', (req, res) => {
       userModel.remove((err, dataset) => {
+        console.log("ça va del ou pas");
         if (err) return res.status(500).send(err);
         return res.status(200).send(dataset);
-      }, req.body.ids); // tableau d'ids ici ...
+      }, req.body.id_user); // tableau d'ids ici ...
     });
   
     router.patch('/user', (req, res) => {
