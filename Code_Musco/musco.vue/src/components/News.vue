@@ -10,15 +10,18 @@
                     params: {id: annonce.id_annonce, annonce: annonce.annonce, annonce_owner: annonce.annonce_owner, date: annonce.date, avatar: annonce.avatar, pseudo: annonce.pseudo, categorie: annonce.categorie, skill: annonce.skil}
                 }"> -->
                     <!-- <router-link>    -->
-                        <!-- <figure> -->
-                            <!-- <img :src="getAvatar(annonce.avatar)" :alt="annonce.pseudo"> -->
-                        <!-- </figure> -->
+                        <figure>
+                            <img :src="getAvatar(annonce.avatar)" :alt="annonce.pseudo">
+                        </figure>
                     <!-- </router-link>  -->
-                    <h3 id="pseudo">{{ annonce.pseudo }}</h3>
-                    <p id="date">{{ annonce.date }}</p>
-                    <h4 id="cat">categorie: {{ annonce.categorie }}</h4>
-                    <h4 id="skill"> skill: {{ annonce.skill }}</h4>
-                    <p id="annonce">{{ annonce.annonce }}</p>
+                    <!-- <img src="@/assets/Avatars/avatar_par_defaut.jpg" :alt="annonce.pseudo"> -->
+                    <article>
+                        <h3 id="pseudo">{{ annonce.pseudo }}</h3>
+                        <p id="date">{{ annonce.date }}</p>
+                        <h4 id="cat">categorie: {{ annonce.categorie }}</h4>
+                        <h4 id="skill"> skill: {{ annonce.skill }}</h4>
+                        <p id="annonce">{{ annonce.annonce }}</p>
+                    </article>
                 <!-- </router-link> -->
 
             </div>
@@ -36,16 +39,17 @@ export default {
         };
     },
     methods: {
-        // getAvatar(url) {
-        //     return url ? require(`@/assets/Images/Avatars/${url}`) : require("@/assets/Images/Avatars/avatar_par_defaut.jpg");
-        //     if (url) {
-        //         return require(`@/assets/Images/Avatars/${url}`);
-        //     } else {
-        //         require("@/assets/Images/Avatars/avatar_par_defaut.jpg");
-        //     }
-        // },
+        getAvatar(url) {
+            console.log(url);
+            return url ? require(`@/assets/Avatars/${url}`) : require("@/assets/Avatars/avatar_par_defaut.jpg");
+            // if (url) {
+            //     return require(`@/assets/Avatars/${url}`);
+            // } else {
+            //     require("@/assets/Avatars/avatar_par_defaut.jpg");
+            // }
+        },
         getAnnonce() {
-            const url = "http://localhost:5000/api/v1/annonces";
+            let url = "http://localhost:5000/api/v1/annonces";
             axios.get(url).then(res => {
                 this.annonces = res.data;
             }).catch(err => {
@@ -72,6 +76,11 @@ export default {
             font-size: 30px;
             text-align: center;
             margin-top: 60px
+        }
+
+        img {
+            height: 50px;
+            width: 50px
         }
     }
 </style>

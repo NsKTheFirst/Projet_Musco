@@ -39,7 +39,7 @@ const annonceModel = function annonceModel (connection) {
         } else {
           sql = "SELECT a.id_annonce, a.annonce, a.id_annonce_owner AS 'annonce_owner', a.date , u.avatar AS 'avatar', u.pseudo, s.categorie, s.skill FROM annonces AS a INNER JOIN users AS u ON a.id_annonce_owner = u.id_user INNER JOIN annonce_needs_skills AS ans ON a.id_annonce = ans.id_annonce_skill INNER JOIN skills AS s ON ans.id_skills_needed = s.id_skill";
         }
-        connection.query(sql, [id_annonce], (error, results) => {
+        connection.query(sql, [id_annonce], [last], (error, results) => {
           // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
           if (error) return clbk(error, null);
           return clbk(null, results);

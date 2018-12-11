@@ -5,7 +5,7 @@ const userModel = function userModel(connection) {
       const q = "INSERT INTO users (nom, prenom, pseudo, mdp, mail, avatar, soundcloud, youtube, facebook, localisation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       const payload = [data.nom, data.prenom, data.pseudo, data.mdp, data.mail, data.avatar, data.soundcloud, data.youtube, data.facebook, data.localisation];
   
-      connection.query(q, payload, (err, res, cols) => {
+      connection.query(q, payload, (err, res) => {
         // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
         if (err) return clbk(err, null);
         return clbk(null, res);
@@ -19,7 +19,7 @@ const userModel = function userModel(connection) {
       console.log(q + " " + id_user);
 
   
-      connection.query(q, id_user, function (err, res, fields) {
+      connection.query(q, id_user, function (err, res) {
         // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
         if (err) return clbk(res, null);
         return clbk(null, res);
@@ -45,7 +45,7 @@ const userModel = function userModel(connection) {
       } else {
         sql = "SELECT * FROM users";
       }
-      connection.query(sql, [id_user], (error, results, fields) => {
+      connection.query(sql, [id_user], (error, results) => {
         // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
         if (error) return clbk(error, null);
         return clbk(null, results);
