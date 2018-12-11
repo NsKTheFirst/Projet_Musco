@@ -1,4 +1,4 @@
-const database = function database(config) {
+const database = function database() {
     const mysql  = require('mysql');
   
     const connection = mysql.createConnection({
@@ -9,7 +9,7 @@ const database = function database(config) {
     });
   
     const connect = function connect() {
-      connection.connect(function(err, res) {
+      connection.connect(function(err) {
         if (err) return console.error(err);
         else console.log("db connected");
          // le serveur node est connecté au serveur mysql (BDD)
@@ -23,7 +23,7 @@ const database = function database(config) {
     const test = function test() {
       // fonction de test pour vérifier la bonne connection
       const sql = 'SELECT 1 + 1 AS solution';
-      connection.query(sql, function (error, results, fields) {
+      connection.query(sql, function (error, results) {
         if (error) throw error;
         console.log('The solution is: ', results[0].solution);
       });

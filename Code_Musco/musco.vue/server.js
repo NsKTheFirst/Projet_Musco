@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 8080;
+const port = 5000;
 const api = require(__dirname + "/api");
 
 

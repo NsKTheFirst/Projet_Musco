@@ -10,10 +10,13 @@ const api = (function api() {
     const routers = []; // on expotera ce tableau une fois rempli de routeurs...
     // IMPORT DES ROUTES DE l'API USER
     const userRouter = require("./user")(database.connection); // module api user
-    
+    const annonceRouter = require("./annonce")(database.connection);
+    const messageRouter = require("./message")(database.connection);
   
     // aggrégation des routeurs dans un tableau
     routers.push(userRouter);
+    routers.push(annonceRouter);
+    routers.push(messageRouter);
   
     return { // définition des propriétés publiques du module @root/api/index.js
       version: APIVersion,

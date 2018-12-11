@@ -11,11 +11,11 @@ const userAPi = function userAPi(connection) {
       }, req.body); // post datas ici ...
     });
   
-    router.get('/user/:id', (req, res) => {
+    router.get('/user/:id_user', (req, res) => {
       userModel.get((err, dataset) => {
         if (err) res.send(err);
         res.send(dataset);
-      }, req.params.id);
+      }, req.params.id_user);
     });
   
     router.get('/user', (req, res) => {

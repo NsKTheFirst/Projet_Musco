@@ -22,6 +22,8 @@ export default {
         width: 100%;
         height: 60px;
         text-align: center;
+        // position: absolute; 
+        // bottom: 0;
 
         ul {
             list-style: none;
@@ -36,7 +38,7 @@ export default {
 
                 &:hover {
                     cursor: pointer;
-                    color: #01dc0e
+                    color: #8833f8
                 }
             }
         }

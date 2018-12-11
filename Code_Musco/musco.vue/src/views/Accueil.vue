@@ -4,7 +4,7 @@
             <img src="@/assets/Images/photo_header.jpg" alt="Studio">
         </figure>
         <About/>
-        <News></News>
+        <News/>
     </div>
 </template>
 
