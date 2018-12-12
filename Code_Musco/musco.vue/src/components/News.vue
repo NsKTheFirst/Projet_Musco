@@ -49,7 +49,7 @@ export default {
             // }
         },
         getAnnonce() {
-            let url = "http://localhost:5000/api/v1/annonces";
+            let url = "http://localhost:5000/api/v1/annonces/last";
             axios.get(url).then(res => {
                 this.annonces = res.data;
             }).catch(err => {

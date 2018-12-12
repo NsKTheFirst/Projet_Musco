@@ -2,10 +2,10 @@ const userModel = function userModel(connection) {
 
     // Requête de création
     const create = function createUser(clbk, data) {
-      const q = "INSERT INTO users (nom, prenom, pseudo, mdp, mail, avatar, soundcloud, youtube, facebook, localisation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      const sql = "INSERT INTO users (nom, prenom, pseudo, mdp, mail, avatar, soundcloud, youtube, facebook, localisation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       const payload = [data.nom, data.prenom, data.pseudo, data.mdp, data.mail, data.avatar, data.soundcloud, data.youtube, data.facebook, data.localisation];
   
-      connection.query(q, payload, (err, res) => {
+      connection.query(sql, payload, (err, res) => {
         // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
         if (err) return clbk(err, null);
         return clbk(null, res);
@@ -15,11 +15,11 @@ const userModel = function userModel(connection) {
     // Requête de suppression
     const remove = function deleteUser(clbk, id_user) {
       // la clause SQL IN permet de chercher une valeur dans un tableau
-      const q = "DELETE FROM users WHERE id_user IN (?)";
-      console.log(q + " " + id_user);
+      const sql = "DELETE FROM users WHERE id_user IN (?)";
+      console.log(sql + " " + id_user);
 
   
-      connection.query(q, id_user, function (err, res) {
+      connection.query(sql, id_user, function (err, res) {
         // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
         if (err) return clbk(res, null);
         return clbk(null, res);
@@ -28,9 +28,9 @@ const userModel = function userModel(connection) {
   
     // Requête de mise à jour
     const update = function editUser(clbk, users) {
-      const q = "UPDATE users SET nom = ?, prenom = ?,pseudo = ?, mdp = ?, mail = ?, avatar = ?, soundcloud = ?, youtube = ?, facebook = ?, localisation = ? WHERE id_user IN (?)";
+      const sql = "UPDATE users SET nom = ?, prenom = ?,pseudo = ?, mdp = ?, mail = ?, avatar = ?, soundcloud = ?, youtube = ?, facebook = ?, localisation = ? WHERE id_user IN (?)";
       const payload = [users.nom, users.prenom,users.pseudo, users.mdp, users.mail, users.avatar, users.soundcloud, users.youtube, users.facebook, users.localisation, users.id_user];
-      connection.query(q, payload, function (err, res, fields) {
+      connection.query(sql, payload, function (err, res, fields) {
         // console.log(this.sql); // affiche la dernière requête SQL, pratique pour deboguer
         if (err) return clbk(err, null);
         return clbk(null, res);

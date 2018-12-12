@@ -12,21 +12,24 @@ const annonceAPi = function annonceAPi(connection) {
     });
   
     router.get('/annonces/:id_annonce', (req, res) => {
-      annonceModel.get((err, dataset) => {
+      annonceModel.getOne((err, dataset) => {
         if (err) return res.status(500).send(err);
         else return res.status(200).send(dataset);
       }, req.params.id_annonce);
     });
 
     router.get('/annonces/last', (req, res) => {
-      annonceModel.get((err, dataset) => {
+      annonceModel.getLast((err, dataset) => {
+        console.log("yo");//ne passe pas!!!
         if (err) return res.status(500).send(err);
-        else return res.status(200).send(dataset);
-      }, req.params.last);
+        else 
+        console.log(res.send(dataset));
+        return res.status(200).send(dataset);
+      });
     });
   
     router.get('/annonces', (req, res) => {
-      annonceModel.get( (err, dataset) => {
+      annonceModel.getAll((err, dataset) => {
         if (err) return res.status(500).send(err);
         else return res.status(200).send(dataset);
       }, null);
